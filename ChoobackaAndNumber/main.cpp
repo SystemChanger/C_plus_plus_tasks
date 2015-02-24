@@ -8,9 +8,9 @@ int main()
     string numForChoo;
     cout << "Choobacka wants number...:";
     cin >> numForChoo;
-    if (numForChoo[0] == '0')
+    if (numForChoo[0] == '9')
     {
-        cout << "Please, enter number without leading zeroes...:" << endl;
+        cout << "Please, enter number without leading nines...:" << endl;
         cin >> numForChoo;
     }
 
