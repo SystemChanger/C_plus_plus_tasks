@@ -16,7 +16,7 @@ int main()
 
    for (int i = 0; i < numForChoo.size(); i++)
        if (numForChoo[i] > '4')
-            numForChoo[i] = 9 - (numForChoo[i] - '0') + '0';
+            numForChoo[i] = '9' - numForChoo[i] + '0';
 
     cout << "Choobacka returned you: " << numForChoo;
     return 0;
