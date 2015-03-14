@@ -8,7 +8,7 @@ int main()
     int HP_Y, ATK_Y, DEF_Y;
     int HP_M, ATK_M, DEF_M;
     int HP_cost, ATK_cost, DEF_cost;
-    float HP_priority = 1, ATK_priority = 1, DEF_priority = 1;
+    float HP_priority = 0, ATK_priority = 0, DEF_priority = 0;
 
     cout << "Enter HP_Y, ATK_Y, DEF_Y...:";
     cin >> HP_Y >> ATK_Y >> DEF_Y;
@@ -33,9 +33,10 @@ int main()
     {
         HP_priority = float(HP_cost) / float(roundsToKillM);
 
-        DEF_priority = float(roundsToKillM) / float(DEF_cost);
+        DEF_priority = float(1) / float( (ATK_M - DEF_Y) * DEF_cost );
 
-        ATK_priority = float(roundsToKillY) / float(ATK_cost);
+        if ((ATK_Y - DEF_M) < HP_M)
+            ATK_priority = float(ATK_Y - DEF_M) / (float(HP_M * ATK_cost));
         if ( (DEF_M - ATK_Y) >= 0 )
             ATK_priority = DEF_priority + HP_priority + 1;
 
@@ -65,6 +66,8 @@ int main()
             roundsToKillM = 999;
         if (ATK_M - DEF_Y <= 0)
             roundsToKillY = 999;
+
+        ATK_priority = 0;
     }
 
 
