@@ -24,7 +24,7 @@ int main()
 
     if (ATK_Y - DEF_M <= 0)
         roundsToKillM = 999;
-    if (ATK_M - DEF_Y == 0)
+    if (ATK_M - DEF_Y <= 0)
         roundsToKillY = 999;
 
     int minBitcoinstToSpent = 0;
@@ -33,7 +33,7 @@ int main()
     {
         HP_priority = float(HP_cost) / float(roundsToKillM);
 
-        DEF_priority = float(1) / float( (ATK_M - DEF_Y) * DEF_cost );
+        DEF_priority = float(roundsToKillM) / float( 100 * (ATK_M - DEF_Y) * DEF_cost );
 
         if ((ATK_Y - DEF_M) < HP_M)
             ATK_priority = float(ATK_Y - DEF_M) / (float(HP_M * ATK_cost));
