@@ -6,6 +6,8 @@ class MyVector
 {
 private:
     int *array;
+    int *new_array;
+    int size;
 public:
     MyVector(int);
 
@@ -14,7 +16,9 @@ public:
 
     int getSize();
 
-    void deleteArray();
+    void expandArray();
+    void pushBack(int);
+    void freeMemory();
 };
 
 
