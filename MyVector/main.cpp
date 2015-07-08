@@ -12,7 +12,7 @@ int main()
     myVector.pushBack(8);
 
 
-    cout<<myVector.getCellValue(0)<<endl<<myVector.getCellValue(10)<<endl<<myVector.getSize()<<endl;
+    cout<<myVector.getCellValue(0)<<endl<<myVector.getCellValue(1)<<endl<<myVector.getSize()<<endl;
 
     return 0;
 }
