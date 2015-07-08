@@ -63,13 +63,9 @@ void MyVector::pushBack(int value)
     if (memCap < size)
     {
         expandArray();
-        setCellValue(size - 1, value);
     }
 
-    else
-    {
-        setCellValue(size-1, value);
-    }
+    setCellValue(size-1, value);
 }
 
 void MyVector::freeMemory()
