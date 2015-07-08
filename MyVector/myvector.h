@@ -7,9 +7,10 @@ class MyVector
 private:
     int *array;
     int size;
+    int memCap;
     float k;
 public:
-    MyVector();
+    MyVector(int);
     ~MyVector();
 
     void setCellValue(int, int);

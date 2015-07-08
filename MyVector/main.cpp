@@ -6,13 +6,14 @@ using namespace std;
 int main()
 {
 
-    MyVector myVector;
+    MyVector myVector(10);
 
     myVector.setCellValue(0, 25);
     myVector.pushBack(8);
+    myVector.pushBack(9);
 
 
-    cout<<myVector.getCellValue(0)<<endl<<myVector.getCellValue(10)<<endl<<myVector.getSize()<<endl;
+    cout<<myVector.getCellValue(0)<<endl<<myVector.getCellValue(2)<<endl<<myVector.getSize()<<endl;
 
     return 0;
 }
