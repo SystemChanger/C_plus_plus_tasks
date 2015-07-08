@@ -6,10 +6,11 @@ class MyVector
 {
 private:
     int *array;
-    int *new_array;
     int size;
+    float k;
 public:
-    MyVector(int);
+    MyVector();
+    ~MyVector();
 
     void setCellValue(int, int);
     int getCellValue(int);

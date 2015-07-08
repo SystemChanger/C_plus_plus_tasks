@@ -2,19 +2,25 @@
 
 #include <iostream>
 #include <cstring>
+#include <math.h>
 
 using namespace std;
 
-MyVector::MyVector(int size)
+MyVector::MyVector()
 {
-    this->size = size;
+    array = new int [1];
+    size = 1;
+    k = (1+sqrt(5))/2;
+}
 
-    this->array = new int [size];
+MyVector::~MyVector()
+{
+    freeMemory();
 }
 
 void MyVector::setCellValue(int cellNum, int value)
 {
-    this->array[cellNum] = value;
+    array[cellNum] = value;
 }
 
 int MyVector::getCellValue(int cellNum)
@@ -29,14 +35,13 @@ int MyVector::getSize()
 
 void MyVector::expandArray()
 {
-    this->new_array = new int [size + 1];
+    size = size+1;
+    int *new_array = new int [int(size*k)];
 
-    memcpy(new_array, array, size);
+    memcpy(new_array, array, size-1);
 
     delete [] array;
-    this->array = new_array;
-
-    this->size = size + 1;
+    array = new_array;
 }
 
 void MyVector::pushBack(int value)
@@ -48,5 +53,4 @@ void MyVector::pushBack(int value)
 void MyVector::freeMemory()
 {
     delete [] array;
-    delete [] new_array;
 }

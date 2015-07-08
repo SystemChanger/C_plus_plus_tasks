@@ -6,7 +6,7 @@ using namespace std;
 int main()
 {
 
-    MyVector myVector(10);
+    MyVector myVector;
 
     myVector.setCellValue(0, 25);
     myVector.pushBack(8);
@@ -14,8 +14,6 @@ int main()
 
     cout<<myVector.getCellValue(0)<<endl<<myVector.getCellValue(10)<<endl<<myVector.getSize()<<endl;
 
-
-    myVector.freeMemory();
     return 0;
 }
 
