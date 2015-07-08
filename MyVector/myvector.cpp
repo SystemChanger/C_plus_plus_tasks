@@ -47,9 +47,8 @@ int MyVector::getSize()
 
 void MyVector::expandArray()
 {
-    size++;
     int *new_array = new int [int(size*k)];
-    memCap++;
+    memCap = int(size*k);
 
     memcpy(new_array, array, (size-1)*sizeof(int));
 
@@ -59,6 +58,8 @@ void MyVector::expandArray()
 
 void MyVector::pushBack(int value)
 {
+    size++;
+
     if (memCap < size)
     {
         expandArray();
@@ -67,7 +68,6 @@ void MyVector::pushBack(int value)
 
     else
     {
-        size++;
         setCellValue(size-1, value);
     }
 }

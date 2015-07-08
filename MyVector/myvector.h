@@ -9,6 +9,9 @@ private:
     int size;
     int memCap;
     float k;
+
+    void expandArray();
+    void freeMemory();
 public:
     MyVector(int);
     ~MyVector();
@@ -18,9 +21,7 @@ public:
 
     int getSize();
 
-    void expandArray();
     void pushBack(int);
-    void freeMemory();
 };
 
 
