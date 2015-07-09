@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <cstring>
-#include <math.h>
+
 
 using namespace std;
 
@@ -11,7 +11,6 @@ MyVector::MyVector(int memCap)
     this->memCap = memCap;
     array = new int [memCap];
     size = 1;
-    k = (1+sqrt(5))/2;
 }
 
 MyVector::~MyVector()

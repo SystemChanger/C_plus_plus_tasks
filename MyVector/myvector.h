@@ -8,13 +8,14 @@ private:
     int *array;
     int size;
     int memCap;
-    float k;
 
     void expandArray();
     void freeMemory();
 public:
     MyVector(int);
     ~MyVector();
+
+    static const float k = 1.618;
 
     void setCellValue(int, int);
     int getCellValue(int);
