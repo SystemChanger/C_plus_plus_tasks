@@ -25,7 +25,10 @@ void MyVector::setCellValue(int cellNum, int value)
         array[cellNum] = value;
 
     else
+    {
         cout<<"cellNum is out of vector size!"<<endl;
+        exit(1);
+    }
 }
 
 int MyVector::getCellValue(int cellNum)
@@ -36,7 +39,7 @@ int MyVector::getCellValue(int cellNum)
     else
     {
         cout<<"cellNum is out of vector size!"<<endl;
-        return 0;
+        exit(1);
     }
 }
 
