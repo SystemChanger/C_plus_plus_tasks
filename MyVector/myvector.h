@@ -22,6 +22,7 @@ public:
 
     int getSize();
 
+    void insert(int, int);
     void pushBack(int);
 };
 

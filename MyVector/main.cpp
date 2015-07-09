@@ -8,12 +8,15 @@ int main()
 
     MyVector myVector(10);
 
-    myVector.setCellValue(0, 25);
+    myVector.pushBack(25);
     myVector.pushBack(8);
     myVector.pushBack(9);
+    myVector.insert(2, 24);
 
 
-    cout<<myVector.getCellValue(0)<<endl<<myVector.getCellValue(2)<<endl<<myVector.getSize()<<endl;
+    for (int i = 0; i < myVector.getSize(); i++)
+        cout<<"vector["<<i<<"]: "<<myVector.getCellValue(i)<<endl;
+    cout<<"\nvector size: "<<myVector.getSize();
 
     return 0;
 }

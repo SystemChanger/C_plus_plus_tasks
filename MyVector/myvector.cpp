@@ -10,7 +10,7 @@ MyVector::MyVector(int memCap)
 {
     this->memCap = memCap;
     array = new int [memCap];
-    size = 1;
+    size = 0;
 }
 
 MyVector::~MyVector()
@@ -58,16 +58,30 @@ void MyVector::expandArray()
     array = new_array;
 }
 
+void MyVector::insert(int cellNum, int value)
+{
+    pushBack(value);
+
+    int switchA, switchB;
+    for (int i = size - 1; i > cellNum; i--)
+    {
+        switchA = array[i - 1];
+        switchB = array[i];
+
+        array[i - 1] = switchB;
+        array[i] = switchA;
+    }
+}
+
 void MyVector::pushBack(int value)
 {
-    size++;
 
     if (memCap < size)
     {
         expandArray();
     }
 
-    setCellValue(size-1, value);
+    setCellValue(size++, value);
 }
 
 void MyVector::freeMemory()
