@@ -12,6 +12,8 @@ int main()
     myVector.pushBack(8);
     myVector.pushBack(9);
     myVector.insert(2, 24);
+    myVector.deleteFromTo(2, 3);
+    myVector.pushBack(35);
 
 
     for (int i = 0; i < myVector.getSize(); i++)
