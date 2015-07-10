@@ -6,14 +6,14 @@ using namespace std;
 int main()
 {
 
-    MyVector <int> myVector(10);
+    MyVector <char> myVector(10);
 
-    myVector.pushBack(25);
-    myVector.pushBack(8);
-    myVector.pushBack(9);
-    myVector.insert(2, 24);
+    myVector.pushBack('a');
+    myVector.pushBack('b');
+    myVector.pushBack('c');
+    myVector.insert(2, 'd');
     myVector.eraseFromTo(2, 3);
-    myVector.pushBack(35);
+    myVector.pushBack('e');
 
 
     for (int i = 0; i < myVector.getSize(); i++)
