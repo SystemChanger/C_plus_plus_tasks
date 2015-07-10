@@ -23,7 +23,7 @@ public:
     int getSize();
 
     void insert(int, int);
-    void deleteFromTo(int, int);
+    void eraseFromTo(int, int);
     void pushBack(int);
 };
 

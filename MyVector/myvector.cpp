@@ -79,23 +79,23 @@ void MyVector::insert(int cellNum, int value)
     }
 }
 
-void MyVector::deleteFromTo(int from, int to)
+void MyVector::eraseFromTo(int from, int to)
 {
     if (from > size - 1 || to > size - 1)
     {
-        cout<<"Error in deleteFromTo(). From/To is out of vector size!"<<endl;
+        cout<<"Error in eraseFromTo(). From/To is out of vector size!"<<endl;
         exit(1);
     }
 
     if (from < 0 || to < 0)
     {
-        cout<<"Error in deleteFromTo(). From/To is out of vector size!"<<endl;
+        cout<<"Error in eraseFromTo(). From/To is out of vector size!"<<endl;
         exit(1);
     }
 
     if (from > to)
     {
-        cout<<"Error in deleteFromTo(). From can't be bigger than To!"<<endl;
+        cout<<"Error in eraseFromTo(). From can't be bigger than To!"<<endl;
         exit(1);
     }
 
@@ -103,22 +103,13 @@ void MyVector::deleteFromTo(int from, int to)
     int oldsize = size;
     int difference = to - from + 1;
     size = (oldsize - difference);
-    int *new_array = new int[int(size*k)];
-    memCap = int(size*k);
 
-    for (int i = 0; i < from; i++)
-    {
-        new_array[i] = array[i];
-    }
 
     if (from < size)
         for (int i = difference - 1; i < size; i++)
         {
-            new_array[i] = array[i + difference];
+            array[i] = array[i + difference];
         }
-
-    delete[] array;
-    array = new_array;
 }
 
 void MyVector::pushBack(int value)
