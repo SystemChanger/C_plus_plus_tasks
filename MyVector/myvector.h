@@ -2,7 +2,6 @@
 #define MYVECTOR
 
 
-#include "myvector.h"
 
 #include <iostream>
 #include <cstring>
