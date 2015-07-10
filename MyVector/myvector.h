@@ -1,11 +1,11 @@
 #ifndef MYVECTOR
 #define MYVECTOR
 
-
+template <typename Type>
 class MyVector
 {
 private:
-    int *array;
+    Type *arrayPtr;
     int size;
     int memCap;
 
@@ -17,14 +17,14 @@ public:
 
     static const float k = 1.618;
 
-    void setCellValue(int, int);
-    int getCellValue(int);
+    void setCellValue(int, Type);
+    Type getCellValue(int);
 
     int getSize();
 
-    void insert(int, int);
+    void insert(int, Type);
     void eraseFromTo(int, int);
-    void pushBack(int);
+    void pushBack(Type);
 };
 
 

@@ -6,22 +6,25 @@
 
 using namespace std;
 
-MyVector::MyVector(int memCap)
+template <typename Type>
+MyVector<Type>::MyVector(int memCap)
 {
     this->memCap = memCap;
-    array = new int [memCap];
+    arrayPtr = new Type [memCap];
     size = 0;
 }
 
-MyVector::~MyVector()
+template <typename Type>
+MyVector<Type>::~MyVector()
 {
     freeMemory();
 }
 
-void MyVector::setCellValue(int cellNum, int value)
+template <typename Type>
+void MyVector<Type>::setCellValue(int cellNum, Type value)
 {
     if (cellNum < size && cellNum >= 0)
-        array[cellNum] = value;
+        arrayPtr[cellNum] = value;
 
     else
     {
@@ -30,10 +33,11 @@ void MyVector::setCellValue(int cellNum, int value)
     }
 }
 
-int MyVector::getCellValue(int cellNum)
+template <typename Type>
+Type MyVector<Type>::getCellValue(int cellNum)
 {
     if (cellNum < size && cellNum >= 0)
-        return array[cellNum];
+        return arrayPtr[cellNum];
 
     else
     {
@@ -42,23 +46,26 @@ int MyVector::getCellValue(int cellNum)
     }
 }
 
-int MyVector::getSize()
+template <typename Type>
+int MyVector<Type>::getSize()
 {
     return size;
 }
 
-void MyVector::expandArray()
+template <typename Type>
+void MyVector<Type>::expandArray()
 {
-    int *new_array = new int [int(size*k)];
+    Type *new_arrayPtr = new Type [int(size*k)];
     memCap = int(size*k);
 
-    memcpy(new_array, array, (size-1)*sizeof(int));
+    memcpy(new_arrayPtr, arrayPtr, (size-1)*sizeof(Type));
 
-    delete [] array;
-    array = new_array;
+    delete [] arrayPtr;
+    arrayPtr = new_arrayPtr;
 }
 
-void MyVector::insert(int cellNum, int value)
+template <typename Type>
+void MyVector<Type>::insert(int cellNum, Type value)
 {
     if (cellNum >= size || cellNum < 0)
     {
@@ -68,18 +75,19 @@ void MyVector::insert(int cellNum, int value)
 
     pushBack(value);
 
-    int switchA, switchB;
+    Type switchA, switchB;
     for (int i = size - 1; i > cellNum; i--)
     {
-        switchA = array[i - 1];
-        switchB = array[i];
+        switchA = arrayPtr[i - 1];
+        switchB = arrayPtr[i];
 
-        array[i - 1] = switchB;
-        array[i] = switchA;
+        arrayPtr[i - 1] = switchB;
+        arrayPtr[i] = switchA;
     }
 }
 
-void MyVector::eraseFromTo(int from, int to)
+template <typename Type>
+void MyVector<Type>::eraseFromTo(int from, int to)
 {
     if (from > size - 1 || to > size - 1)
     {
@@ -108,14 +116,15 @@ void MyVector::eraseFromTo(int from, int to)
     if (from < size)
         for (int i = difference - 1; i < size; i++)
         {
-            array[i] = array[i + difference];
+            arrayPtr[i] = arrayPtr[i + difference];
         }
 }
 
-void MyVector::pushBack(int value)
+template <typename Type>
+void MyVector<Type>::pushBack(Type value)
 {
 
-    if (memCap < size)
+    if (memCap < size*sizeof(Type))
     {
         expandArray();
     }
@@ -123,7 +132,8 @@ void MyVector::pushBack(int value)
     setCellValue(size++, value);
 }
 
-void MyVector::freeMemory()
+template <typename Type>
+void MyVector<Type>::freeMemory()
 {
-    delete [] array;
+    delete [] arrayPtr;
 }
