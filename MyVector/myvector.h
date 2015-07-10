@@ -38,6 +38,12 @@ private:
 public:
     MyVector(int memCap)
     {
+        if (memCap <= 0)
+        {
+            cout<<"Error in object creation! memCap can't be smaller than '1' "<<endl;
+            exit(1);
+        }
+
         this->memCap = memCap;
         arrayPtr = new Type [memCap];
         size = 0;
