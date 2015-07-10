@@ -12,7 +12,7 @@ int main()
     myVector.pushBack(8);
     myVector.pushBack(9);
     myVector.insert(2, 24);
-    myVector.deleteFromTo(2, 3);
+    myVector.deleteFromTo(1, 3);
     myVector.pushBack(35);
 
 

@@ -81,6 +81,18 @@ void MyVector::insert(int cellNum, int value)
 
 void MyVector::deleteFromTo(int from, int to)
 {
+    if (from > size - 1 || to > size - 1)
+    {
+        cout<<"Error in deleteFromTo(). From/To is out of vector size!"<<endl;
+        exit(1);
+    }
+
+    if (from < 0 || to < 0)
+    {
+        cout<<"Error in deleteFromTo(). From/To is out of vector size!"<<endl;
+        exit(1);
+    }
+
     if (from > to)
     {
         cout<<"Error in deleteFromTo(). From can't be bigger than To!"<<endl;
