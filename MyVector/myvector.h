@@ -28,7 +28,7 @@ private:
 
         delete [] arrayPtr;
         arrayPtr = new_arrayPtr;
-    };
+    }
 
 
     void freeMemory()
