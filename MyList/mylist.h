@@ -149,6 +149,55 @@ public:
 
     }
 
+    void erase(int cellNum)
+        {
+            if (cellNum > end() || cellNum < 0)
+            {
+                cout<<"Error in erase(). cellNum is out of vector size!"<<endl;
+                exit(1);
+            }
+
+            for (int i = cellNum; i < end(); i++)
+            {
+                arrayPtr[i] = arrayPtr[i + 1];
+            }
+
+            size--;
+        }
+
+    void erase(int from, int to)
+        {
+            if (from > size - 1 || to > size - 1)
+            {
+                cout<<"Error in eraseFromTo(). From/To is out of vector size!"<<endl;
+                exit(1);
+            }
+
+            if (from < 0 || to < 0)
+            {
+                cout<<"Error in eraseFromTo(). From/To is out of vector size!"<<endl;
+                exit(1);
+            }
+
+            if (from > to)
+            {
+                cout<<"Error in eraseFromTo(). From can't be bigger than To!"<<endl;
+                exit(1);
+            }
+
+
+            int oldsize = size;
+            int difference = to - from + 1;
+            size = (oldsize - difference);
+
+
+            if (from < size)
+                for (int i = difference - 1; i < size; i++)
+                {
+                    arrayPtr[i] = arrayPtr[i + difference];
+                }
+        }
+
 };
 
 
