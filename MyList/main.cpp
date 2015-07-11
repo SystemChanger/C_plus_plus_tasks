@@ -6,14 +6,14 @@ using namespace std;
 
 int main()
 {
-    MyList <int> myList;
-    myList.pushBack(1);
-    myList.pushBack(2);
-    myList.pushBack(3);
-    myList.pushFront(8);
-    myList.pushFront(4);
-    myList.insert(3, 4);
-    myList.insert(0, 3, 6);
+    MyList <char> myList;
+    myList.pushBack('a');
+    myList.pushBack('b');
+    myList.pushBack('c');
+    myList.pushFront('d');
+    myList.pushFront('e');
+    myList.insert(3, 'X');
+    myList.insert(0, 3, 'X');
     myList.erase(myList.begin()+3, myList.end()-2);
     myList.erase(myList.end());
     myList.erase(myList.end());

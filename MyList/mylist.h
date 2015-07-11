@@ -59,6 +59,11 @@ public:
 
     Type getCellValue(int cellNum)
     {
+        if (cellNum > end() || cellNum < begin())
+        {
+            cout<<"Error in getCellValue(). 'cellNum'' is out of list size!"<<endl;
+            exit(1);
+        }
         return arrayPtr[cellNum];
     }
 
@@ -96,6 +101,13 @@ public:
 
     void insert (int cellToInsertBefore, Type value)
     {
+        if (cellToInsertBefore > end() || cellToInsertBefore < begin())
+        {
+            cout<<"Error in insert(). 'cellToInsertBefore'' is out of list size!"<<endl;
+            exit(1);
+        }
+
+
         if (memCap < size*sizeof(Type))
         {
             expandArray();
@@ -117,6 +129,17 @@ public:
 
     void insert (int cellToInsertBefore, int amount, Type value)
     {
+        if (cellToInsertBefore > end() || cellToInsertBefore < 0)
+        {
+            cout<<"Error in insert(cellToInsertBefore, amount, value). 'cellToInsertBefore' is out of list size!"<<endl;
+            exit(1);
+        }
+
+        if (amount > getSize() || amount < 0)
+        {
+            cout<<"Error in insert(cellToInsertBefore, amount, value). 'amount' can't be bigger than list size!"<<endl;
+            exit(1);
+        }
 
         int oldsize = size;
 
@@ -153,7 +176,7 @@ public:
         {
             if (cellNum > end() || cellNum < 0)
             {
-                cout<<"Error in erase(). cellNum is out of vector size!"<<endl;
+                cout<<"Error in erase(). 'cellNum'' is out of list size!"<<endl;
                 exit(1);
             }
 
@@ -169,19 +192,19 @@ public:
         {
             if (from > size - 1 || to > size - 1)
             {
-                cout<<"Error in eraseFromTo(). From/To is out of vector size!"<<endl;
+                cout<<"Error in erase(from, to). 'from'/'to'' is out of list size!"<<endl;
                 exit(1);
             }
 
             if (from < 0 || to < 0)
             {
-                cout<<"Error in eraseFromTo(). From/To is out of vector size!"<<endl;
+                cout<<"Error in erase(from, to). 'from'/'to'' is out of list size!"<<endl;
                 exit(1);
             }
 
             if (from > to)
             {
-                cout<<"Error in eraseFromTo(). From can't be bigger than To!"<<endl;
+                cout<<"Error in erase(from, to). 'from' can't be bigger than 'to'!"<<endl;
                 exit(1);
             }
 
