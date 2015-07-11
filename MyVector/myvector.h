@@ -146,7 +146,7 @@ public:
     void pushBack(Type value)
     {
 
-        if (memCap < size*sizeof(Type))
+        if (memCap < size)
         {
             expandArray();
         }
