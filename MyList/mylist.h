@@ -89,7 +89,7 @@ public:
             swapB = arrayPtr[i];
 
             arrayPtr[i - 1] = swapB;
-            arrayPtr[i] = swap;
+            arrayPtr[i] = swapA;
         }
 
     }
