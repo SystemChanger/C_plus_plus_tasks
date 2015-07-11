@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include <cstring>
+#include <cmath>
 
 using namespace std;
 
@@ -20,10 +21,10 @@ private:
 
     void expandArray()
     {
-        Type *new_arrayPtr = new Type [int(size*k)];
-        memCap = int(size*k);
+        memCap = ceil(size*k);
+        Type *new_arrayPtr = new Type [memCap];
 
-        memcpy(new_arrayPtr, arrayPtr, (size-1)*sizeof(Type));
+        memcpy(new_arrayPtr, arrayPtr, size*sizeof(Type));
 
         delete [] arrayPtr;
         arrayPtr = new_arrayPtr;

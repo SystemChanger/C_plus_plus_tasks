@@ -6,7 +6,7 @@ using namespace std;
 int main()
 {
 
-    MyVector <char> myVector(10);
+    MyVector <char> myVector(1);
 
     myVector.pushBack('a');
     myVector.pushBack('b');
