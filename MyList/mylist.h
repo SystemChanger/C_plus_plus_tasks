@@ -80,7 +80,7 @@ public:
 
     void pushFront(Type value)
     {
-        if (memCap < size*sizeof(Type))
+        if (memCap < size)
         {
             expandArray();
         }
@@ -108,7 +108,7 @@ public:
         }
 
 
-        if (memCap < size*sizeof(Type))
+        if (memCap < size)
         {
             expandArray();
         }
@@ -220,6 +220,22 @@ public:
                     arrayPtr[i] = arrayPtr[i + difference];
                 }
         }
+
+
+    Type operator [](int cellNum)
+    {
+        return getCellValue(cellNum);
+    }
+
+    void operator - (int amount)
+    {
+        erase (end() - amount + 1, end());
+    }
+
+    void operator + (Type value)
+    {
+        pushBack(value);
+    }
 
 };
 
