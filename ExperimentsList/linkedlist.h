@@ -45,7 +45,7 @@ public:
 
     void add(int value)
     {
-        Field *newField = new Field(header, value, );
+        Field *newField = new Field(NULL, value, header);
         size++;
     }
 
