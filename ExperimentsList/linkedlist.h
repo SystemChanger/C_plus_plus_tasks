@@ -12,12 +12,13 @@ private:
     class Field
     {
     private:
-        int value;
-        int nextField;
-        int previousField;
 
     public:
-        Field(int value, int nextField, int previousField)
+        int value;
+        int *nextField;
+        int *previousField;
+
+        Field(int value, int *nextField, int *previousField)
         {
             this->value = value;
             this->nextField = nextField;
@@ -32,7 +33,7 @@ private:
 public:
     LinkedList()
     {
-        Field header = new Field(NULL, NULL, NULL);
+        Field header = new Field(NULL, &header, &header);
         size = 0;
     }
     ~LinkedList()
@@ -42,13 +43,12 @@ public:
 
     void add(int value)
     {
-        Field newField = new Field(value, header.nextField, header.previousField += 1);
+        Field newField = new Field(value, header, newField.previousField);
         size++;
     }
 
     int getCellValue(int fieldNum)
     {
-
     }
 };
 
