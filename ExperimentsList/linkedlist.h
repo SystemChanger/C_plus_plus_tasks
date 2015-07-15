@@ -7,7 +7,6 @@
 class LinkedList
 {
 private:
-    Field *header;
     int size;
 
     class Field
@@ -15,21 +14,23 @@ private:
     private:
 
     public:
+        int *previousField;
         int value;
         int *nextField;
-        int *previousField;
 
-        Field(int value, int *nextField, int *previousField)
+        Field(int *previousField, int value, int *nextField)
         {
+            this->previousField = previousField;
             this->value = value;
             this->nextField = nextField;
-            this->previousField = previousField;
         }
         ~Field()
         {
             delete this;
         }
     };
+
+    Field *header;
 
 public:
     LinkedList()
@@ -44,7 +45,7 @@ public:
 
     void add(int value)
     {
-        Field *newField = new Field(value, header, newField.previousField);
+        Field *newField = new Field(header, value, );
         size++;
     }
 
