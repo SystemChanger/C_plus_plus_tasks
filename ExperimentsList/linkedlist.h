@@ -1,7 +1,7 @@
 #ifndef LINKEDLIST
 #define LINKEDLIST
 
-#define NULL 0;
+#define NULL 0
 
 
 class LinkedList
