@@ -7,6 +7,7 @@
 class LinkedList
 {
 private:
+    Field *header;
     int size;
 
     class Field
@@ -33,7 +34,7 @@ private:
 public:
     LinkedList()
     {
-        Field header = new Field(NULL, &header, &header);
+        header = new Field(NULL, NULL, NULL);
         size = 0;
     }
     ~LinkedList()
@@ -43,7 +44,7 @@ public:
 
     void add(int value)
     {
-        Field newField = new Field(value, header, newField.previousField);
+        Field *newField = new Field(value, header, newField.previousField);
         size++;
     }
 
