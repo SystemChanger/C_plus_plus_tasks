@@ -43,7 +43,7 @@ private:
 public:
     LinkedList()
     {
-        header = new Field(NULL, NULL, NULL);
+        header = new Field(NULL, 0, NULL);
         newField = header;
 
         header->previousField = newField;
