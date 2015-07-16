@@ -7,13 +7,19 @@ using namespace std;
 
 int main()
 {
-    LinkedList list;
-    list.add(3);
-    list.add(5);
-    list.add(8);
+    LinkedList<char> list;
+    list.add('a');
+    list.add('b');
+    list.add('c');
+    list.add('d');
+    list.addFirst('e');
+    list.insertCellValue(3, 'f');
+    list.insertCellValue(0, 'g');
+    list.deleteCell(list.begin());
+    list.deleteCell(list.end());
 
     for (int i = 0; i <= list.end(); i++)
-        cout << list.getCellValue(i)<< endl;
+        cout << list[i]<< endl;
 
     return 0;
 }

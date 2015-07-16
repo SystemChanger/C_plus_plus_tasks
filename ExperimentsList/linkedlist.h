@@ -9,7 +9,7 @@
 using namespace std;
 
 
-
+template <typename Type>
 class LinkedList
 {
 private:
@@ -21,10 +21,10 @@ private:
 
     public:
         Field *previousField;
-        int value;
+        Type value;
         Field *nextField;
 
-        Field(Field *previousField, int value, Field *nextField)
+        Field(Field *previousField, Type value, Field *nextField)
         {
             this->previousField = previousField;
             this->value = value;
@@ -58,7 +58,7 @@ public:
         delete this;
     }
 
-    void add(int value)
+    void add(Type value)
     {
         newField = new Field(newField, value, header);
         newField->previousField->nextField = newField;
@@ -66,6 +66,54 @@ public:
         header->previousField = newField;
 
         size++;
+    }
+
+    void addFirst(Type value)
+    {
+        newField = new Field(header, value, header->nextField);
+        header->nextField = newField;
+        newField->nextField->previousField = newField;
+
+        size++;
+    }
+
+    void insertCellValue(int fieldNum, Type value)
+    {
+        if (fieldNum < begin() || fieldNum > end())
+        {
+            cout<<"Error in insertCellValue(fieldNum, value). Cell is out of list size!"<<endl;
+            exit(1);
+        }
+
+        for (int i = 0; i <= fieldNum; i++)
+            targetField = targetField->nextField;
+
+        newField = new Field(targetField->previousField, value, targetField);
+        newField->previousField->nextField = newField;
+        newField->nextField->previousField = newField;
+
+        size++;
+
+        targetField = header;
+    }
+
+    void deleteCell(int fieldNum)
+    {
+        if (fieldNum < begin() || fieldNum > end())
+        {
+            cout<<"Error in deleteCell(fieldNum). Cell is out of list size!"<<endl;
+            exit(1);
+        }
+
+        for (int i = 0; i <= fieldNum; i++)
+            targetField = targetField->nextField;
+
+        targetField->previousField->nextField = targetField->nextField;
+        targetField->nextField->previousField = targetField->previousField;
+
+        size--;
+
+        targetField = header;
     }
 
     int getSize()
@@ -83,24 +131,27 @@ public:
         return size - 1;
     }
 
-    int getCellValue(int fieldNum)
+    Type getCellValue(int fieldNum)
     {
-        if (fieldNum < 0 || fieldNum > size - 1)
+        if (fieldNum < begin() || fieldNum > end())
         {
             cout<<"Error in getCellValue(). 'CellValue'' is out of list size!"<<endl;
             exit(1);
         }
 
         for (int i = 0; i <= fieldNum; i++)
-        {
             targetField = targetField->nextField;
-        }
 
-        int value = targetField->value;
+        Type value = targetField->value;
 
         targetField = header;
 
         return value;
+    }
+
+    Type operator [] (int fieldNum)
+    {
+        return getCellValue(fieldNum);
     }
 };
 
