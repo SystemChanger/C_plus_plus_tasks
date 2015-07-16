@@ -44,7 +44,7 @@ public:
     LinkedList()
     {
         header = new Field(NULL, NULL, NULL);
-        newField = new Field(header, NULL, header);
+        newField = header;
 
         header->previousField = newField;
         header->nextField = newField;
@@ -60,15 +60,27 @@ public:
 
     void add(int value)
     {
-        if (size > 0)
-        {
-            newField = new Field(newField, value, header);
-            newField->previousField->nextField = newField;
-        }
-        else
-            newField->value = value;
+        newField = new Field(newField, value, header);
+        newField->previousField->nextField = newField;
+
+        header->previousField = newField;
 
         size++;
+    }
+
+    int getSize()
+    {
+        return size;
+    }
+
+    int begin()
+    {
+        return 0;
+    }
+
+    int end()
+    {
+        return size - 1;
     }
 
     int getCellValue(int fieldNum)
@@ -79,14 +91,14 @@ public:
             exit(1);
         }
 
-        for (int i = 0; i < fieldNum; i++)
+        for (int i = 0; i <= fieldNum; i++)
         {
             targetField = targetField->nextField;
         }
 
         int value = targetField->value;
 
-        targetField = header->nextField;
+        targetField = header;
 
         return value;
     }

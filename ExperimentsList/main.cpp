@@ -10,7 +10,11 @@ int main()
     LinkedList list;
     list.add(3);
     list.add(5);
-    cout << list.getCellValue(1)<< endl;
+    list.add(8);
+
+    for (int i = 0; i <= list.end(); i++)
+        cout << list.getCellValue(i)<< endl;
+
     return 0;
 }
 
