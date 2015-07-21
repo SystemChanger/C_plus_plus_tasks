@@ -8,15 +8,18 @@ using namespace std;
 int main()
 {
     LinkedList<char> list;
-    list.add('a');
+
     list.add('b');
     list.add('c');
-    list.add('d');
-    list.addFirst('e');
-    list.insertCellValue(3, 'f');
-    list.insertCellValue(0, 'g');
-    list.deleteCell(list.begin());
-    list.deleteCell(list.end());
+    list.addFirst('a');
+    list.add('e');
+    list.insertCellValue(list.end()-1, 'd');
+    list.add('f');
+    list.addFirst('#');
+    list.pop_front();
+    list.add('$');
+    list.pop_back();
+
 
     for (int i = 0; i <= list.end(); i++)
         cout << list[i]<< endl;

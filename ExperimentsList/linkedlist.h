@@ -116,6 +116,16 @@ public:
         targetField = header;
     }
 
+    void pop_front()
+    {
+        deleteCell(begin());
+    }
+
+    void pop_back()
+    {
+        deleteCell(end());
+    }
+
     int getSize()
     {
         return size;
