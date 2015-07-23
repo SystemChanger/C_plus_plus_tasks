@@ -9,15 +9,15 @@ int main()
 {
     LinkedList<char> list;
 
-    list.add('b');
-    list.add('c');
-    list.addFirst('a');
-    list.add('e');
-    list.insertCellValue(list.end()-1, 'd');
-    list.add('f');
-    list.addFirst('#');
+    list.push_back('b');
+    list.push_back('c');
+    list.push_front('a');
+    list.push_back('e');
+    list.insertCellValue(list.end(), 'd');
+    list.push_back('f');
+    list.push_front('#');
     list.pop_front();
-    list.add('$');
+    list.push_back('$');
     list.pop_back();
 
 

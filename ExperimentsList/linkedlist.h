@@ -58,9 +58,9 @@ public:
         delete this;
     }
 
-    void add(Type value)
+    void push_back(Type value)
     {
-        newField = new Field(newField, value, header);
+        newField = new Field(header->previousField, value, header);
         newField->previousField->nextField = newField;
 
         header->previousField = newField;
@@ -68,7 +68,7 @@ public:
         size++;
     }
 
-    void addFirst(Type value)
+    void push_front(Type value)
     {
         newField = new Field(header, value, header->nextField);
         header->nextField = newField;
@@ -97,11 +97,11 @@ public:
         targetField = header;
     }
 
-    void deleteCell(int fieldNum)
+    void erase(int fieldNum)
     {
         if (fieldNum < begin() || fieldNum > end())
         {
-            cout<<"Error in deleteCell(fieldNum). Cell is out of list size!"<<endl;
+            cout<<"Error in erase(fieldNum). Cell is out of list size!"<<endl;
             exit(1);
         }
 
@@ -113,17 +113,18 @@ public:
 
         size--;
 
+        delete targetField;
         targetField = header;
     }
 
     void pop_front()
     {
-        deleteCell(begin());
+        erase(begin());
     }
 
     void pop_back()
     {
-        deleteCell(end());
+        erase(end());
     }
 
     int getSize()
