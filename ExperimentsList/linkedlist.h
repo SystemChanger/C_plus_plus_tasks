@@ -32,13 +32,13 @@ private:
         }
         ~Field()
         {
-            delete this;
         }
     };
 
     Field *header;
-    Field *newField;
-    Field *targetField;
+      Field *newField;
+      Field *targetField;
+    Field *tail;
 
 public:
     LinkedList()
@@ -46,7 +46,8 @@ public:
         header = new Field(NULL, 0, NULL);
         newField = header;
 
-        header->previousField = newField;
+        tail = new Field(newField, 0, header);
+        header->previousField = tail;
         header->nextField = newField;
 
         size = 0;
@@ -55,15 +56,23 @@ public:
     }
     ~LinkedList()
     {
-        delete this;
+        for (int i = 0; i <= end(); i++)
+        {
+            targetField = targetField->nextField;
+            delete targetField;
+        }
+
+        delete header;
+        delete tail;
     }
 
     void push_back(Type value)
     {
-        newField = new Field(header->previousField, value, header);
-        newField->previousField->nextField = newField;
+        newField = new Field(tail->previousField, value, tail);
 
-        header->previousField = newField;
+        Field *previousField = newField->previousField;
+        previousField->nextField = newField;
+        tail->previousField = newField;
 
         size++;
     }
@@ -72,7 +81,9 @@ public:
     {
         newField = new Field(header, value, header->nextField);
         header->nextField = newField;
-        newField->nextField->previousField = newField;
+
+        Field *secondField = newField->nextField;
+        secondField->previousField = newField;
 
         size++;
     }
@@ -89,8 +100,12 @@ public:
             targetField = targetField->nextField;
 
         newField = new Field(targetField->previousField, value, targetField);
-        newField->previousField->nextField = newField;
-        newField->nextField->previousField = newField;
+
+        Field *previousField = newField->previousField;
+        previousField->nextField = newField;
+
+        Field *nextField = newField->nextField;
+        nextField->previousField = newField;
 
         size++;
 
@@ -108,8 +123,11 @@ public:
         for (int i = 0; i <= fieldNum; i++)
             targetField = targetField->nextField;
 
-        targetField->previousField->nextField = targetField->nextField;
-        targetField->nextField->previousField = targetField->previousField;
+        Field *previousField = targetField->previousField;
+        Field *nextField = targetField->nextField;
+
+        previousField->nextField = nextField;
+        nextField->previousField = previousField;
 
         size--;
 

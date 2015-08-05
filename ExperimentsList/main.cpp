@@ -19,6 +19,7 @@ int main()
     list.pop_front();
     list.push_back('$');
     list.pop_back();
+    list.push_back('g');
 
 
     for (int i = 0; i <= list.end(); i++)
